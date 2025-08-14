@@ -14,22 +14,19 @@ export const Contact = () => {
   });
 
   const [result, setResult] = useState("");
-  const [phoneError, setPhoneError] = useState(""); // State for the phone validation error
+  const [phoneError, setPhoneError] = useState("");
 
-  // Phone number validation function
   const validatePhone = (phone: string) => {
     if (!phone) {
-      // It's optional, so no error if it's empty
       setPhoneError("");
       return true;
     }
-    // A flexible regex for common US phone number formats
     const phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     if (!phoneRegex.test(phone)) {
       setPhoneError("Please enter a valid phone number.");
       return false;
     }
-    setPhoneError(""); // Clear error if valid
+    setPhoneError("");
     return true;
   };
 
@@ -37,7 +34,6 @@ export const Contact = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Validate phone number as the user types
     if (name === 'phone') {
       validatePhone(value);
     }
@@ -46,7 +42,6 @@ export const Contact = () => {
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Prevent submission if the phone number is entered but invalid
     if (!validatePhone(formData.phone)) {
       return;
     }
@@ -54,7 +49,7 @@ export const Contact = () => {
     setResult("Sending....");
     const formElement = event.currentTarget;
     const submissionData = new FormData(formElement);
-    submissionData.append("access_key", "7501ce31-2f45-4917-9657-5b01a864752a"); // <-- Use your actual key
+    submissionData.append("access_key", "YOUR_ACCESS_KEY_HERE");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -73,7 +68,6 @@ export const Contact = () => {
     }
   };
 
-  // Determine input ring color based on validation error
   const phoneInputRingClass = phoneError
     ? "ring-red-500 focus:ring-red-500"
     : "ring-white/10 focus:ring-indigo-500";
@@ -82,14 +76,14 @@ export const Contact = () => {
     <section id="contact" className="py-20 sm:py-32 bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">Let's Connect</h2>
+          {/* CORRECTED LINE: Changed "Let's" to "Let&apos;s" */}
+          <h2 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">Let&apos;s Connect</h2>
           <p className="mt-4 text-lg leading-8 text-gray-300">
             Have a partnership idea or want to pilot one of our products at your campus? We’d love to hear from you.
           </p>
         </div>
         <form onSubmit={onSubmit} className="max-w-xl mx-auto mt-16">
           <div className="grid grid-cols-1 gap-y-6 gap-x-8 sm:grid-cols-2">
-            {/* ... other form fields remain the same ... */}
             <div>
               <label htmlFor="firstName" className="block text-sm font-semibold leading-6 text-white">First name</label>
               <div className="mt-2.5">

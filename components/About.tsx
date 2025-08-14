@@ -1,9 +1,17 @@
 // components/About.tsx
 "use client";
-import { motion, Variants } from 'framer-motion'; // Import Variants type
+import { motion, Variants } from 'framer-motion';
 import { Users, Lock, Handshake } from 'lucide-react';
+import React from 'react'; // Import React for React.ReactNode
 
-// Explicitly define the type for our animation variants
+// Define a specific type for the component's props
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  index: number;
+}
+
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
@@ -12,12 +20,13 @@ const cardVariants: Variants = {
     transition: {
       delay: i * 0.2,
       duration: 0.6,
-      ease: "easeOut", // This is now correctly typed
+      ease: "easeOut",
     },
   }),
 };
 
-const FeatureCard = ({ icon, title, description, index }: any) => (
+// Use the new FeatureCardProps type instead of 'any'
+const FeatureCard = ({ icon, title, description, index }: FeatureCardProps) => (
   <motion.div
     className="group relative overflow-hidden flex flex-col items-center text-center p-8 bg-gray-900 rounded-lg border border-gray-800"
     custom={index}
@@ -26,10 +35,7 @@ const FeatureCard = ({ icon, title, description, index }: any) => (
     whileInView="visible"
     viewport={{ once: true, amount: 0.5 }}
   >
-    {/* Glow effect on hover */}
-    <div
-      className="absolute -inset-px rounded-lg bg-gradient-to-r from-indigo-500 to-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-70"
-    ></div>
+    <div className="absolute -inset-px rounded-lg bg-gradient-to-r from-indigo-500 to-teal-500 opacity-0 transition-opacity duration-300 group-hover:opacity-70"></div>
     <div className="relative z-10">
       <div className="p-3 bg-indigo-500/10 rounded-full inline-block">
         {icon}
