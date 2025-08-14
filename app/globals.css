@@ -24,3 +24,53 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Typographic Reveal Loader Styles (Corrected) */
+.loader-background {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000; /* Pure black */
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out 1.2s; /* Fade out after a delay */
+}
+
+.typewriter-container {
+  display: inline-block; /* Ensures container fits the text */
+}
+
+.typewriter-text {
+  font-family: var(--font-lexend), sans-serif; /* Use the premium Lexend font */
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 500;
+  color: #fff;
+  width: 0; /* Starts with zero width */
+  overflow: hidden; /* Hides the text that doesn't fit */
+  border-right: .15em solid #0ea5e9; /* The blinking cursor */
+  white-space: nowrap;
+  margin: 0 auto;
+  animation:
+    typing 2.2s steps(24, end) forwards, /* The typing animation */
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect animates the width */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #0ea5e9; }
+}
+
+/* Class to trigger the fade-out of the loader */
+.loader-hidden {
+  opacity: 0;
+  pointer-events: none;
+}

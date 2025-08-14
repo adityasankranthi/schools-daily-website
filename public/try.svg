@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="shard-glow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"></stop>
+      <stop offset="100%" stop-color="#0ea5e9"></stop>
+    </linearGradient>
+    <linearGradient id="shard-dark" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"></stop>
+      <stop offset="100%" stop-color="#4f46e5"></stop>
+    </linearGradient>
+    <radialGradient id="sheen">
+        <stop offset="0%" stop-color="white" stop-opacity="0.3"></stop>
+        <stop offset="100%" stop-color="white" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <g style="filter: blur(4px);" transform="translate(0, 6)">
+    <path d="M100 171.4L44.8 141.2L100 111L155.2 141.2L100 171.4Z" fill="black" opacity="0.25"></path>
+    <path d="M100 89L44.8 58.8L100 28.6L155.2 58.8L100 89Z" fill="black" opacity="0.25"></path>
+  </g>
+  <g transform="translate(0, -10)">
+    <path d="M100 148.8L44.8 118.6L100 88.4L155.2 118.6L100 148.8Z" fill="url(#shard-glow)"></path>
+    <path d="M44.8 118.6L100 148.8L100 88.4L44.8 118.6Z" fill="#0284c7"></path>
+    <path d="M155.2 118.6L100 88.4L100 148.8L155.2 118.6Z" fill="#0369a1"></path>
+    <path d="M100 111L44.8 80.8L100 50.6L155.2 80.8L100 111Z" fill="url(#shard-dark)"></path>
+    <path d="M44.8 80.8L100 111L100 50.6L44.8 80.8Z" fill="#4f46e5"></path>
+    <path d="M155.2 80.8L100 50.6L100 111L155.2 80.8Z" fill="#3730a3"></path>
+    <path d="M100 111L44.8 80.8L100 50.6L155.2 80.8L100 111Z" fill="url(#sheen)" opacity="0.8"></path>
+    <path d="M100 148.8L44.8 118.6L100 88.4L155.2 118.6L100 148.8Z" fill="url(#sheen)" opacity="0.5"></path>
+  </g>
+</svg>
